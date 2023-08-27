@@ -2,18 +2,41 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/cameraFragment">
+    app:startDestination="@id/instructionsFragment">
 
     <fragment
-        android:id="@+id/cameraFragment"
-        android:name="ru.inncreator.sintez.ui.gallery.GalleryFragment"
-        android:label="CameraFragment" >
+        android:id="@+id/instructionsFragment"
+        android:name="ru.inncreator.sintez.ui.start.InstructionsFragment"
+        android:label="InstructionsFragment" >
         <action
-            android:id="@+id/action_cameraFragment_to_permissionsFragment"
-            app:destination="@id/permissionsFragment" />
+            android:id="@+id/action_instructionsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/permissionsFragment"
         android:name="ru.inncreator.sintez.ui.camera.PermissionsFragment"
         android:label="PermissionsFragment" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="ru.inncreator.sintez.ui.gallery.GalleryFragment"
+        android:label="GalleryFragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.inncreator.sintez.ui.start.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="ru.inncreator.sintez.ui.camera.CameraFragment"
+        android:label="CameraFragment" >
+        <action
+            android:id="@+id/action_cameraFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+    </fragment>
 </navigation>

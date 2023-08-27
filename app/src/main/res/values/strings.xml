@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">sintez</string>
     <string name="tv_gallery_placeholder">Жмякни плюсик</string>
+    <string name="start">начать</string>
+    <string name="n0ll"> </string>
+    <string name="text_for_start">Загрузите видео с игрой в гольф, чтобы оценить свои навыки с помощью искусственного интеллекта!</string>
+    <string name="load_video">загрузить видео</string>
+    <string name="open_camera">открыть камеру</string>
 </resources>

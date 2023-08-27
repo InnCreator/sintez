@@ -11,40 +11,63 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/tv_gallery_placeholder"/>
-
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imageResult"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitStart"
+        android:visibility="gone" />
 
-        <ImageView
-            android:id="@+id/imageResult"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@null"
-            android:scaleType="fitStart"
-            android:visibility="gone" />
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-        <VideoView
-            android:id="@+id/videoView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
 
-        <ru.inncreator.sintez.ui.view.OverlayView
-            android:id="@+id/overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true" />
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:indeterminate="true"
-            android:visibility="gone"/>
 
-    </RelativeLayout>
+    <ru.inncreator.sintez.ui.view.OverlayView
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:id="@+id/position_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/progress"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/M"
+        android:layout_marginStart="@dimen/M"
+        android:layout_marginBottom="80dp"
+        android:padding="@dimen/M"
+        android:thumb="@drawable/seekbar_thumb"
+        android:progressDrawable="@drawable/seekbar_drawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabGetContent"
@@ -56,6 +79,18 @@
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="@dimen/M"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:tint="@android:color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import kotlinx.coroutines.launch
+import ru.inncreator.sintez.MlModel
 import ru.inncreator.sintez.detector.PoseLandmarkerHelper
 import ru.inncreator.sintez.R
 import ru.inncreator.sintez.databinding.CameraUiContainerBinding
@@ -106,6 +107,8 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                 poseLandmarkerHelperListener = this
             )
         }
+
+        MlModel.initModel(requireContext())
     }
 
     override fun onResume() {
@@ -157,7 +160,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
         }
 
         cameraUiContainerBinding?.cameraCloseButton?.setOnClickListener {
-            requireActivity().finish()
+            findNavController().popBackStack()
         }
 
         backgroundExecutor.execute {
@@ -292,6 +295,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
 
     override fun onResults(resultBundle: PoseLandmarkerHelper.ResultBundle) {
         if (fragmentCameraBinding != null) {
+//            MlModel.tryModel(resultBundle.results.first())
             fragmentCameraBinding?.overlay?.setResults(
                 resultBundle.results.first(),
                 resultBundle.inputImageHeight,

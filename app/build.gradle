@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.chaquo.python'
 }
 
 android {
@@ -14,7 +15,30 @@ android {
         versionCode 1
         versionName "1.0"
 
+        sourceSets {
+            main {
+                python.srcDir "python/dir"
+            }
+        }
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+
+        python {
+            buildPython "/opt/homebrew/bin/python3"
+            version "3.8"
+            pip{
+                install "pandas"
+                install "joblib"
+                install "scikit-learn"
+            }
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    aaptOptions{
+        noCompress "tflite"
     }
 
     buildTypes {
@@ -62,6 +86,9 @@ dependencies {
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    implementation 'com.google.android.material:material:1.9.0'
+//    implementation 'org.gradle.toolchains.foojay-resolver-convention:0.5.0'
 
 
 }

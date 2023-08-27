@@ -31,6 +31,7 @@ import com.google.mediapipe.tasks.core.Delegate
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
+import timber.log.Timber
 
 class PoseLandmarkerHelper(
     var minPoseDetectionConfidence: Float = DEFAULT_POSE_DETECTION_CONFIDENCE,
@@ -133,20 +134,14 @@ class PoseLandmarkerHelper(
                 "Pose Landmarker failed to initialize. See error logs for " +
                         "details"
             )
-            Log.e(
-                TAG, "MediaPipe failed to load the task with error: " + e
-                    .message
-            )
+            Timber.e("MediaPipe failed to load the task with error: " + e.message)
         } catch (e: RuntimeException) {
             // This occurs if the model being used does not support GPU
             poseLandmarkerHelperListener?.onError(
                 "Pose Landmarker failed to initialize. See error logs for " +
                         "details", GPU_ERROR
             )
-            Log.e(
-                TAG,
-                "Image classifier failed to load model with error: " + e.message
-            )
+            Timber.e("Image classifier failed to load model with error: " + e.message)
         }
     }
 
